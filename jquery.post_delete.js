@@ -1,10 +1,11 @@
 (function($j) {  
   $j.fn.post_delete = function(opts) { 
+
     // defaults
     var opts = $j.extend({
       confirm: function(el) {
         // get confirmation message from attribute "confirm"
-        var confirmMessage = $j(el).attr("confirm");
+        var confirmMessage = $j(el).attr("data-confirm");
         if(confirmMessage != undefined && confirmMessage != "")
         {
           return confirm(confirmMessage);
@@ -17,7 +18,7 @@
     }, opts);
     
     this.unbind("click");
-    this.live("click",function() {
+    this.click(function() {
       
       // check confirmation before submitting
       var confirmed = true;
